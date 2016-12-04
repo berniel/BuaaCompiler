@@ -1,0 +1,12 @@
+This is a program!
+This is a constance declaration!
+This is a constance definition!
+This is an integer!
+5
+This is an integer!
+5
+This is a constance definition!
+This is a constance definition!
+This is a variable declaration!
+This is a variable definition!
+0

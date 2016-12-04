@@ -1,0 +1,38 @@
+1 NEG null null des //des = - des
+2 ADD src1 src2 des  //des=src1+src2
+3 SUB src1 src2 des  //des=src1-src2
+4 MUL src1 src2 des  //des=src1*src2
+5 DIV src1 src2 des  //des=src1/src2
+6 LS src1 src2 des //src1<src2成立，则des为1；否则为0
+7 BG src1 src2 des //    >   
+8 NLS src1 src2 des //   >=
+9 NBG src1 src2 des //   <=
+10 EQU src1 src2 des //   == 
+11 NEQ src1 src2 des //   !=
+12 ASN src1 null des //将src1赋给des
+13 GLV null null des //声明全局变量
+14 GLC null null des //声明全局常量
+15 FDCL null null des //声明函数开始
+16 MDCL null null null //main函数声明开始
+17 END null null null //声明函数结束，自动生成return
+18 RRT null null des //返回语句，des为表达式，要把值存在$v0
+19 VRT null null null //无返回值返回语句
+20 LAB null null des //设置des标签
+21 GOTO null null des //无条件跳转到des标签
+22 TGOTO src1 null des //若src1为不为0则跳到des标签
+23 NGOTO src1 null des //若src1为0则跳到des标签
+24 CALL null null des //调用des函数
+25 PUSH null null des //将对应的变量压栈
+26 MFF null null des //把函数的返回值$v0写入des
+27 LFA src1 src2 des //des = src1[src2]
+28 STA src1 src2 des  //src1[src2]=des
+29 RD null null des   //读到的数值赋给des
+30 WRS null null des   //写字符串
+31 WRC null null des  //写字符表达式
+32 WRI null null des  //写整数表达式
+
+
+
+
+
+

@@ -1,0 +1,74 @@
+# depslib dependency file v1.0
+1480852525 source:e:\codeblocks\projects\mycomp\getsym.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"error.h"
+	"getSym.h"
+
+1479309851 e:\codeblocks\projects\mycomp\error.h
+
+1479309621 e:\codeblocks\projects\mycomp\getsym.h
+
+1480859337 source:e:\codeblocks\projects\mycomp\grammar.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"getSym.h"
+	"SymbolTable.h"
+	"grammar.h"
+	"error.h"
+	"Quadruple.h"
+
+1480266845 e:\codeblocks\projects\mycomp\grammar.h
+
+1480275724 e:\codeblocks\projects\mycomp\symboltable.h
+
+1480854566 source:e:\codeblocks\projects\mycomp\error.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"getSym.h"
+	"error.h"
+
+1480859560 source:e:\codeblocks\projects\mycomp\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"getSym.h"
+	"SymbolTable.h"
+	"error.h"
+	"grammar.h"
+	"Quadruple.h"
+	"GenerateCode.h"
+
+1480275375 source:e:\codeblocks\projects\mycomp\symboltable.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"getSym.h"
+	"SymbolTable.h"
+	"error.h"
+
+1480849525 e:\codeblocks\projects\mycomp\quadruple.h
+
+1480847480 source:e:\codeblocks\projects\mycomp\quadruple.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"getSym.h"
+	"SymbolTable.h"
+	"error.h"
+	"grammar.h"
+	"Quadruple.h"
+
+1480858051 source:e:\codeblocks\projects\mycomp\generatecode.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"getSym.h"
+	"SymbolTable.h"
+	"Quadruple.h"
+
+1480276905 e:\codeblocks\projects\mycomp\generatecode.h
+

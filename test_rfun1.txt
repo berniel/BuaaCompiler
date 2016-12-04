@@ -1,0 +1,10 @@
+int a(int b){
+	b=b+1;
+	return (b);
+}
+void main(){
+	int t;
+	t = 5;
+	t = a(t);
+	printf(t);
+}

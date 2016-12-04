@@ -1,0 +1,147 @@
+const int one=1,two=2;
+char array[100],ch;
+void dient(int length){
+    const char true = 'T',flase='F';
+    int i;
+    i=0;
+    if(isLetter(array[0])==1){
+        for(i=1;i<length;i=i+1){
+            if(isLetter(array[i])){
+                ;
+            }
+            else if(isDigit(array[i])=='1'){
+                ;
+            }
+            else
+                i=length+1;
+        }
+        if(i==length){
+            printf(true);
+        }
+        else
+            printf(flase);
+    }
+    else{
+        printf(flase);
+    }
+}
+char isDigit(char c1){
+    if(c1>='0'){
+        if(c1<='9')
+            return('1');
+        else
+            return('0');
+    }
+    return('0');
+}
+int isLetter(char c1){
+    if(c1>='a'){
+        if(c1<='z'){
+            return(1);
+        }
+        else
+            return(0);
+    }
+    if(c1>='A'){
+        if(c1<='Z'){
+            return(1);
+        }
+        else
+            return(0);
+    }
+    else if(c1=='_')
+        return(1);
+    else
+        return(0);
+}
+int sum(int n ,int m){
+    const int i=0;
+    int res;
+    res =0;
+    for(i=n;i<=m;i=i+1){
+        res=res+i;
+    }
+    return (res);
+}
+void printASCII(){  
+    printf("hahhah");
+}
+void logical_relation(char c1,char c2){
+    if(c1<=c2)
+        printf("c1 <= c2");
+    if(c1<c2)
+        printf("c1 < c2");
+    if(c1>=c2){
+        printf("c1 >= c2");
+    }
+    if(c1>c2){
+        printf("c1 > c2");
+    }
+    if(c1 != c2){
+        printf("c1!=c2");
+    }
+    if(c1==c2){
+        printf("c1==c2");
+    }
+    return;
+}
+int toInt(char c){
+    return (c-'0');
+}
+void kongkong(){
+    ;
+}
+void main(){
+    const char CA='a',cc1='1',cc2='2',cc3='3';
+    const int three=3;
+    int index,res,input1,input2,input3,express1,express2,express3;
+    char ca,cA;
+    scanf(input1);
+    scanf(input2,input3);
+    ca=CA;
+    cA='A';
+    index=0;
+    array[index]='_';
+    for (index=1;index<=26; index=index+1)
+    {
+        array[index]=ca;
+        ca=ca+1;
+    }
+    dient(27);
+
+    for(index=0;index<=25;index=index+1){
+        array[index]=cA;
+        cA=cA+1;
+    }
+    array[26]='1';
+    dient(27);
+
+    array[0]='1';
+    dient(1);
+
+    res=sum(0,9);
+    printf("0...9 add result is",res);
+
+    printASCII();
+
+    logical_relation(cc1,cc1);
+
+    logical_relation(cc1,cc2);
+
+    logical_relation(cc3,cc2);
+
+    if(toInt('1'))
+        printf("only if test");
+
+    for (index=three;index;index=index-1)
+    {
+        printf(index);
+    }
+
+    express1= (5+2);
+    express2= -(2*3-8);
+    express3=+(res-5)*(2-1);
+    printf(express1+express2-express3);
+
+    kongkong();
+} 

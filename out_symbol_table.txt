@@ -1,0 +1,236 @@
+Insert:cInt1 11 2 10 0 in table 0
+Insert:cInt2 11 2 -1 0 in table 0
+Insert:cInt3 11 2 0 0 in table 0
+Insert:cMaxInt 11 2 2147483647 0 in table 0
+Insert:cMinInt 11 2 -2147483648 0 in table 0
+Insert:cmaxint 11 2 2147483647 0 in table 0
+Insert:cChar0 11 3 95 0 in table 0
+Insert:cChar1 11 3 97 0 in table 0
+Insert:cChar2 11 3 65 0 in table 0
+Insert:cChar3 11 3 43 0 in table 0
+Insert:cChar4 11 3 42 0 in table 0
+Insert:cChar5 11 3 48 0 in table 0
+Insert:_ 10 2 0 0 in table 0
+Insert:_9 10 2 4 0 in table 0
+Insert:__ 10 2 8 0 in table 0
+Insert:_a 10 2 12 0 in table 0
+Insert:a1 10 2 16 0 in table 0
+Insert:_A 10 3 20 0 in table 0
+Insert:a2 10 2 24 0 in table 0
+Insert:a3 12 2 28 10 in table 0
+Insert:a4 12 2 68 1 in table 0
+Insert:a5 10 2 72 0 in table 0
+Insert:A2 12 3 76 1 in table 0
+Insert:A3 12 3 80 20 in table 0
+Insert:A4 10 3 160 0 in table 0
+Insert:PrintHelloWorld 4 1 1 0 in table 0
+Insert:cInt2 2 2 0 0 in table 1
+Found: cInt2 2 2 0 0 in table 1
+Insert:.t0 8 2 233 0 in table 1
+Insert:.s0 6 1 0 0 in table 1
+Insert:.s1 6 1 0 0 in table 1
+Insert:.s2 6 1 0 0 in table 1
+Insert:.t1 8 3 42 0 in table 1
+Found: cChar0 11 3 95 0 in table 0
+Found: cInt1 11 2 10 0 in table 0
+Found: cInt2 2 2 0 0 in table 1
+Insert:SquareSum 4 2 2 0 in table 0
+Insert:_a 3 2 0 0 in table 2
+Insert:b 3 2 4 0 in table 2
+Insert:unuse 1 2 0 0 in table 2
+Insert:temp 2 2 8 0 in table 2
+Found: temp 2 2 8 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Insert:.t2 8 2 -1 0 in table 2
+Insert:.t3 7 2 12 0 in table 2
+Insert:.t4 7 2 16 0 in table 2
+Found: temp 2 2 8 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Insert:.t5 8 2 0 0 in table 2
+Insert:.t6 7 2 20 0 in table 2
+Found: temp 2 2 8 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Found: unuse 1 2 0 0 in table 2
+Insert:.t7 7 2 24 0 in table 2
+Found: temp 2 2 8 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Insert:.t8 7 2 28 0 in table 2
+Found: temp 2 2 8 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Found: _a 3 2 0 0 in table 2
+Insert:.t9 7 2 32 0 in table 2
+Insert:.t10 7 2 36 0 in table 2
+Insert:.t11 7 2 40 0 in table 2
+Found: b 3 2 4 0 in table 2
+Found: b 3 2 4 0 in table 2
+Insert:.t12 7 2 44 0 in table 2
+Insert:.t13 7 2 48 0 in table 2
+Found: temp 2 2 8 0 in table 2
+Insert:_myStop 4 1 3 0 in table 0
+Insert:temp 2 3 0 0 in table 3
+Insert:.s3 6 1 0 0 in table 3
+Found: temp 2 3 0 0 in table 3
+Insert:NsquareSum 4 2 4 0 in table 0
+Insert:temp 3 2 0 0 in table 4
+Insert:times 3 2 4 0 in table 4
+Insert:noneUse 5 2 8 10 in table 4
+Insert:Temp 2 2 48 0 in table 4
+Found: Temp 2 2 48 0 in table 4
+Found: temp 3 2 0 0 in table 4
+Found: times 3 2 4 0 in table 4
+Insert:.t14 8 2 1 0 in table 4
+Insert:.t15 7 2 52 0 in table 4
+Insert:.l0 9 1 0 0 in table 4
+Found: temp 3 2 0 0 in table 4
+Insert:.l1 9 1 0 0 in table 4
+Found: Temp 2 2 48 0 in table 4
+Found: Temp 2 2 48 0 in table 4
+Found: NsquareSum 4 2 4 0 in table 0
+Found: temp 3 2 0 0 in table 4
+Insert:.t16 7 2 56 0 in table 4
+Found: times 3 2 4 0 in table 4
+Insert:.t17 8 2 1 0 in table 4
+Insert:.t18 7 2 60 0 in table 4
+Insert:.t19 7 2 64 0 in table 4
+Insert:.t20 7 2 68 0 in table 4
+Insert:.t21 7 2 72 0 in table 4
+Found: Temp 2 2 48 0 in table 4
+Insert:NextAlphabet 4 3 5 0 in table 0
+Insert:x 3 3 0 0 in table 5
+Found: x 3 3 0 0 in table 5
+Insert:.t22 8 2 1 0 in table 5
+Insert:.t23 7 2 4 0 in table 5
+Insert:main 4 1 5 0 in table 0
+Insert:num 2 2 0 0 in table 6
+Insert:temp1 2 2 4 0 in table 6
+Insert:temp2 2 2 8 0 in table 6
+Insert:abc 5 3 12 3 in table 6
+Insert:intArray 5 2 24 1 in table 6
+Insert:i 2 2 28 0 in table 6
+Insert:j 2 2 32 0 in table 6
+Insert:k 2 2 36 0 in table 6
+Found: PrintHelloWorld 4 1 1 0 in table 0
+Insert:.s4 6 1 0 0 in table 6
+Found: num 2 2 0 0 in table 6
+Found: i 2 2 28 0 in table 6
+Insert:.t24 8 2 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Insert:.t25 8 2 666 0 in table 6
+Found: intArray 5 2 24 1 in table 6
+Insert:.t26 8 2 0 0 in table 6
+Insert:.t27 8 2 20 0 in table 6
+Insert:.t28 7 2 40 0 in table 6
+Found: intArray 5 2 24 1 in table 6
+Insert:.t29 8 2 0 0 in table 6
+Insert:.t30 7 2 44 0 in table 6
+Found: abc 5 3 12 3 in table 6
+Insert:.t31 8 2 0 0 in table 6
+Insert:.t32 8 3 97 0 in table 6
+Found: abc 5 3 12 3 in table 6
+Insert:.t33 8 2 1 0 in table 6
+Insert:.t34 8 3 98 0 in table 6
+Found: abc 5 3 12 3 in table 6
+Insert:.t35 8 2 2 0 in table 6
+Insert:.t36 8 3 99 0 in table 6
+Found: NextAlphabet 4 3 5 0 in table 0
+Found: abc 5 3 12 3 in table 6
+Insert:.t37 8 2 0 0 in table 6
+Insert:.t38 7 3 48 0 in table 6
+Insert:.t39 7 2 52 0 in table 6
+Insert:.t40 7 3 56 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: intArray 5 2 24 1 in table 6
+Insert:.t41 8 2 0 0 in table 6
+Insert:.t42 7 2 60 0 in table 6
+Insert:.t43 7 2 64 0 in table 6
+Insert:.l2 9 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: intArray 5 2 24 1 in table 6
+Insert:.t44 8 2 0 0 in table 6
+Insert:.t45 7 2 68 0 in table 6
+Insert:.t46 8 2 1 0 in table 6
+Insert:.t47 7 2 72 0 in table 6
+Insert:.l3 9 1 0 0 in table 6
+Insert:.s5 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _a 10 2 12 0 in table 0
+Found: intArray 5 2 24 1 in table 6
+Insert:.t48 8 2 0 0 in table 6
+Insert:.t49 7 2 76 0 in table 6
+Insert:.t50 7 2 80 0 in table 6
+Insert:.l4 9 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Insert:.t51 8 2 2 0 in table 6
+Insert:.l5 9 1 0 0 in table 6
+Insert:.s6 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _a 10 2 12 0 in table 0
+Insert:.t52 8 2 2 0 in table 6
+Insert:.t53 7 2 84 0 in table 6
+Insert:.l6 9 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: intArray 5 2 24 1 in table 6
+Insert:.t54 8 2 0 0 in table 6
+Insert:.t55 7 2 88 0 in table 6
+Insert:.t56 8 2 2 0 in table 6
+Insert:.t57 7 2 92 0 in table 6
+Insert:.l7 9 1 0 0 in table 6
+Insert:.s7 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _a 10 2 12 0 in table 0
+Found: intArray 5 2 24 1 in table 6
+Insert:.t58 8 2 0 0 in table 6
+Insert:.t59 7 2 96 0 in table 6
+Insert:.t60 7 2 100 0 in table 6
+Insert:.l8 9 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Insert:.t61 8 2 4 0 in table 6
+Insert:.l9 9 1 0 0 in table 6
+Insert:.s8 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _a 10 2 12 0 in table 0
+Insert:.t62 8 2 4 0 in table 6
+Insert:.t63 7 2 104 0 in table 6
+Insert:.l10 9 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Insert:.t64 8 2 0 0 in table 6
+Insert:.t65 7 2 108 0 in table 6
+Insert:.l11 9 1 0 0 in table 6
+Insert:.s9 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _a 10 2 12 0 in table 0
+Insert:.t66 8 2 0 0 in table 6
+Insert:.t67 7 2 112 0 in table 6
+Insert:.l12 9 1 0 0 in table 6
+Insert:.s10 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _a 10 2 12 0 in table 0
+Insert:.t68 8 2 666 0 in table 6
+Insert:.l13 9 1 0 0 in table 6
+Insert:.s11 6 1 0 0 in table 6
+Found: _a 10 2 12 0 in table 0
+Found: _myStop 4 1 3 0 in table 0
+Found: i 2 2 28 0 in table 6
+Found: NsquareSum 4 2 4 0 in table 0
+Insert:.t69 8 2 1 0 in table 6
+Insert:.t70 7 2 116 0 in table 6
+Insert:.t71 8 2 1 0 in table 6
+Insert:.t72 7 2 120 0 in table 6
+Insert:.t73 7 2 124 0 in table 6
+Insert:.s12 6 1 0 0 in table 6
+Found: k 2 2 36 0 in table 6
+Found: temp1 2 2 4 0 in table 6
+Found: temp2 2 2 8 0 in table 6
+Insert:.t74 7 2 128 0 in table 6
+Found: i 2 2 28 0 in table 6
+Found: temp1 2 2 4 0 in table 6
+Found: temp2 2 2 8 0 in table 6
+Insert:.t75 7 2 132 0 in table 6
+Found: j 2 2 32 0 in table 6
+Found: temp1 2 2 4 0 in table 6
+Found: j 2 2 32 0 in table 6
+Found: j 2 2 32 0 in table 6
+Found: temp2 2 2 8 0 in table 6
+Insert:.t76 7 2 136 0 in table 6
+Found: _myStop 4 1 3 0 in table 0
