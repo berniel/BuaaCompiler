@@ -6,11 +6,11 @@
 	"error.h"
 	"getSym.h"
 
-1479309851 e:\codeblocks\projects\mycomp\error.h
+1480860369 e:\codeblocks\projects\mycomp\error.h
 
 1479309621 e:\codeblocks\projects\mycomp\getsym.h
 
-1480859337 source:e:\codeblocks\projects\mycomp\grammar.c
+1481625918 source:e:\codeblocks\projects\mycomp\grammar.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
@@ -20,18 +20,18 @@
 	"error.h"
 	"Quadruple.h"
 
-1480266845 e:\codeblocks\projects\mycomp\grammar.h
+1481102396 e:\codeblocks\projects\mycomp\grammar.h
 
 1480275724 e:\codeblocks\projects\mycomp\symboltable.h
 
-1480854566 source:e:\codeblocks\projects\mycomp\error.c
+1481625979 source:e:\codeblocks\projects\mycomp\error.c
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	"getSym.h"
 	"error.h"
 
-1480859560 source:e:\codeblocks\projects\mycomp\main.c
+1481100761 source:e:\codeblocks\projects\mycomp\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -62,7 +62,7 @@
 	"grammar.h"
 	"Quadruple.h"
 
-1480858051 source:e:\codeblocks\projects\mycomp\generatecode.c
+1481104138 source:e:\codeblocks\projects\mycomp\generatecode.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -31,6 +31,7 @@ void error(int n){
         case 20: printf("\' ) \' expected."); break;
         case 21: printf("\' { \' expected."); break;
         case 22: printf("\' } \' expected."); break;
+        case 23: printf("Factor expected."); break;
         case 24: printf("If expected."); break;
         case 25: printf("While expected."); break;
         case 26: printf("\' +/- \' expected."); break;
@@ -57,4 +58,49 @@ void error(int n){
     printf("near %s\n",token);
     //exit(0);
     error_num++;
+}
+void skip(int i){
+    if(i == 1){
+        while(symbol != SEMISY && symbol != COMMASY && symbol != LPARSY){
+            if(symbol == ENDSY)
+                exit(0);
+            getsym();
+        }
+        return;
+    }
+    else if(i == 2){
+        while(symbol != INTSY && symbol != CHARSY && symbol != VOIDSY){
+            if(symbol == ENDSY)
+                exit(0);
+            getsym();
+        }
+    }
+    else if(i == 3){
+        while(symbol != SEMISY){
+            if(symbol == ENDSY)
+                exit(0);
+            getsym();
+        }
+    }
+    else if(i == 4){
+        while(symbol != SEMISY && symbol != COMMASY){
+            if(symbol == ENDSY)
+                exit(0);
+            getsym();
+        }
+    }
+    else if(i == 5){
+        while(symbol != RPARSY){
+            if(symbol == ENDSY)
+                exit(0);
+            getsym();
+        }
+    }
+    else if(i == 6){
+        while(symbol != VOIDSY){
+            if(symbol == ENDSY)
+                exit(0);
+            getsym();
+        }
+    }
 }

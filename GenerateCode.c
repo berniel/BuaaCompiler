@@ -36,7 +36,7 @@ void generate_load_ele(TableEle *te, char rsl[], char t[]){
         strcat(rsl,temp);
         strcat(rsl,"\n");
     }
-    else printf("load : %d\n", te->kind);
+    //else printf("load : %d\n", te->kind);
     fprintf(output_code_pointer,"#load\n");
 }
 void generate_save_ele(TableEle *te, char rsl[], char t[]){
@@ -58,9 +58,9 @@ void generate_save_ele(TableEle *te, char rsl[], char t[]){
         itoa(page_size-44-te->addr,temp,10);
         strcat(rsl,temp);
         strcat(rsl,"($sp)\n");
-        if(te->addr == 1){
-            printf("%d\n",te->kind);
-        }
+       // if(te->addr == 1){
+      //      printf("%d\n",te->kind);
+        //}
     }
     fprintf(output_code_pointer,"#save\n");
 }
@@ -338,7 +338,7 @@ void generate_push(int index){
     TableEle *te = quad[index].des;
     char ins[MAXInstruL]="\0";
     generate_load_ele(te1,ins,"$t0");
-    printf("%d\n",te->addr);
+ //   printf("%d\n",te->addr);
     fprintf(output_code_pointer,ins);
     fprintf(output_code_pointer,"sw\t$t0\t%d($sp)\n",-44-te->addr);
     fprintf(output_code_pointer,"#Push\n");

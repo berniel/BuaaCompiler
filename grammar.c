@@ -40,6 +40,8 @@ void program(){
             getsym();
         } else{
             error(8); //8:应有标识符identity
+            //------------------错误处理---------------
+            skip(1);
         }
         if(symbol == LPARSY){ //有返回值函数，预读完毕，退回字符，清空预读缓存
             clearPreToken();
@@ -52,8 +54,11 @@ void program(){
             getsym();
             var_dcl();
         }
-        else
+        else{
             error(10);//10：有返回值函数或变量声明格式错误
+            //------------------错误处理---------------跳到int/char/void
+            skip(2);
+        }
     }
     while(1){
         if(symbol == CHARSY || symbol == INTSY)
@@ -73,25 +78,34 @@ void program(){
                 getsym();
                 v_func_dcl();
             }
-            else
+            else{
                 error(11);//11：需要一个标识符或main
+                skip(2);
+            }
         }
-        else
+        else{
             error(9);//error 9：需要一个类型符号
+            skip(2);
+        }
     }
 }
 void con_dcl(){
     fprintf(output_grammar_pointer,"This is a constance declaration!\n");
     do{
-        if(symbol != CONSTSY)
+        if(symbol != CONSTSY){
             error(12);//error 12:需要一个const
+            skip(3);
+            getsym();
+            break;
+        }
         getsym();
         con_def();
-        if(symbol != SEMISY)
+        if(symbol != SEMISY){
             error(13);//error 13:需要一个分号
-        getsym();
+        }
+        else
+            getsym();
     } while(symbol == CONSTSY);
-
 }
 void con_def(){
     TableEle* te;
@@ -103,91 +117,115 @@ void con_def(){
         getsym();
         if(symbol != IDSY){
             error(8);//error 8:需要一个标识符
+            skip(4);
         }
-        strcpy(id,token);
-        getsym();
-        if(symbol != ISSY){
-            error(14);//error 14:需要一个等号
-        }
-        getsym();
-        integer();//改变num值?????
-        t_num = num;
-
-        if(table_num == 0){
-            te = enter_table(id,GLOCON,INT,t_num,0, table_num);
-            write_quadruple_s(GLC, te);
-        }
-        else
-            te = enter_table(id,CONST,INT,t_num,0, table_num);
-        while(symbol == COMMASY){
-            getsym();
-            if(symbol != IDSY){
-                error(8);//error 8:需要一个标识符
-            }
+        else{
             strcpy(id,token);
             getsym();
             if(symbol != ISSY){
                 error(14);//error 14:需要一个等号
+                skip(4);
             }
-            getsym();
-            integer();
-            t_num = num;
+            else{
+                getsym();
+                integer();//改变num值?????
+                t_num = num;
 
-            if(table_num==0){
-                te = enter_table(id,GLOCON,INT,t_num,0, table_num);
-                write_quadruple_s(GLC, te);
+                if(table_num == 0){
+                    te = enter_table(id,GLOCON,INT,t_num,0, table_num);
+                    write_quadruple_s(GLC, te);
+                }
+                else
+                    te = enter_table(id,CONST,INT,t_num,0, table_num);
             }
-            else
-                te = enter_table(id,CONST,INT,t_num,0, table_num);
+        }
+
+        while(symbol == COMMASY){
+            getsym();
+            if(symbol != IDSY){
+                error(8);//error 8:需要一个标识符
+                skip(4);
+            }
+            else{
+                strcpy(id,token);
+                getsym();
+                if(symbol != ISSY){
+                    error(14);//error 14:需要一个等号
+                    skip(4);
+                }
+                else{
+                    getsym();
+                    integer();
+                    t_num = num;
+
+                    if(table_num==0){
+                        te = enter_table(id,GLOCON,INT,t_num,0, table_num);
+                        write_quadruple_s(GLC, te);
+                    }
+                    else
+                        te = enter_table(id,CONST,INT,t_num,0, table_num);
+                }
+            }
         }
     }
     if(symbol == CHARSY){
         getsym();
         if(symbol != IDSY){
             error(8);//error 8:需要一个标识符
+            skip(4);
         }
-        strcpy(id,token);
-        getsym();
-        if(symbol != ISSY){
-            error(14);//error 14:需要一个等号
-        }
-        getsym();
-        if(symbol != CHARCON){
-            error(16);//error 16:需要一个字符
-        }
-        t_num = num;
-
-        if(table_num==0){
-            te = enter_table(id,GLOCON,CHAR,t_num,0, table_num);
-            write_quadruple_s(GLC, te);
-        }
-        else
-            te = enter_table(id,CONST,CHAR,t_num,0, table_num);
-        getsym();
-        while(symbol == COMMASY){
-            getsym();
-            if(symbol != IDSY){
-                error(8);//error 8:需要一个标识符
-            }
+        else{
             strcpy(id,token);
             getsym();
             if(symbol != ISSY){
                 error(14);//error 14:需要一个等号
+                skip(4);
             }
             getsym();
             if(symbol != CHARCON){
                 error(16);//error 16:需要一个字符
+                skip(4);
             }
-            t_num = num;
-
-            if(table_num==0){
-                te = enter_table(id,GLOCON,CHAR,t_num,0, table_num);
-                write_quadruple_s(GLC, te);
-
+            else{
+                t_num = num;
+                if(table_num==0){
+                    te = enter_table(id,GLOCON,CHAR,t_num,0, table_num);
+                    write_quadruple_s(GLC, te);
+                }
+                else
+                    te = enter_table(id,CONST,CHAR,t_num,0, table_num);
+                getsym();
             }
-            else
-                te = enter_table(id,CONST,CHAR,t_num,0, table_num);
+        }
+        while(symbol == COMMASY){
             getsym();
+            if(symbol != IDSY){
+            error(8);//error 8:需要一个标识符
+            skip(4);
+        }
+        else{
+            strcpy(id,token);
+            getsym();
+            if(symbol != ISSY){
+                error(14);//error 14:需要一个等号
+                skip(4);
+            }
+            getsym();
+            if(symbol != CHARCON){
+                error(16);//error 16:需要一个字符
+                skip(4);
+            }
+            else{
+                t_num = num;
+                if(table_num==0){
+                    te = enter_table(id,GLOCON,CHAR,t_num,0, table_num);
+                    write_quadruple_s(GLC, te);
+                }
+                else
+                    te = enter_table(id,CONST,CHAR,t_num,0, table_num);
+                getsym();
+            }
+            }
         }
     }
 }
@@ -199,7 +237,9 @@ void var_dcl(){
         if(symbol != SEMISY){
             error(13);//需要一个分号
         }
-        getsym();
+        else{
+            getsym();
+        }
         //开始预读判断下一个是否是变量，不是则返回
         if(symbol != CHARSY && symbol != INTSY){
             return;
@@ -209,17 +249,20 @@ void var_dcl(){
         getsym();
         if(symbol != IDSY){
             error(8);
+            skip(3);
         }
-        strcat(pre_token,token);
-        strcat(pre_token," ");
-        getsym();
-        if(symbol == LPARSY){
+        else{
+            strcat(pre_token,token);
+            strcat(pre_token," ");
+            getsym();
+            if(symbol == LPARSY){
+                clearPreToken();
+                getsym();
+                return;
+            }
             clearPreToken();
             getsym();
-            return;
         }
-        clearPreToken();
-        getsym();
     } while(symbol == CHARSY || symbol == INTSY);
 }
 void var_def(){
@@ -229,71 +272,85 @@ void var_def(){
     fprintf(output_grammar_pointer,"This is a variable definition!\n");
     if(symbol != CHARSY && symbol != INTSY){
         error(17);//需要一个类型标识符
+        skip(3);
+        return;
     }
     type = symbol;
     getsym();
     if(symbol != IDSY){
         error(8);//error 8:需要一个标识符
-    }
-    strcpy(id,token);
-    getsym();
-    if(symbol == LBRACKETSY){
-        getsym();
-        if(symbol != INTCON){
-            error(15);//error 15：需要一个整数
-        }
-        if(num == 0){
-            error(30);//数组长度不能为0
-        }
-        length = num;
-        getsym();
-        if(symbol != RBRACKETSY){
-            error(18);//error 18:需要一个右方括号
-        }
-        getsym();
-        if(type == CHARSY){
-            if(table_num==0){
-                te = enter_table(id, GLOARR, CHAR, addr, length, table_num);
-                write_quadruple_s(GLV, te);
-            }
-            else
-                te = enter_table(id, ARRAY, CHAR, addr, length, table_num);
-            addr+=length*4;
-        }
-        else if(type == INTSY){
-            if(table_num==0){
-                te = enter_table(id, GLOARR, INT, addr, length, table_num);
-                write_quadruple_s(GLV, te);
-            }
-            else
-                te = enter_table(id, ARRAY, INT, addr, length, table_num);
-            addr+=length*4;
-        }
+        skip(4);
     }
     else{
-        if(type == CHARSY){
-            if(table_num==0){
-                te = enter_table(id, GLOVAR, CHAR, addr, length, table_num);
-                write_quadruple_s(GLV, te);
+        strcpy(id,token);
+        getsym();
+        if(symbol == LBRACKETSY){
+            getsym();
+            if(symbol != INTCON){
+                error(15);//error 15：需要一个整数
+                skip(4);
             }
-            else
-                te = enter_table(id, VAR, CHAR, addr, length, table_num);
-            addr+=4;
+            else{
+                if(num == 0){
+                    error(30);//数组长度不能为0
+                    skip(4);
+                }
+                length = num;
+                getsym();
+                if(symbol != RBRACKETSY){
+                    error(18);//error 18:需要一个右方括号
+                    skip(4);
+                }
+                else{
+                    getsym();
+                    if(type == CHARSY){
+                        if(table_num==0){
+                            te = enter_table(id, GLOARR, CHAR, addr, length, table_num);
+                            write_quadruple_s(GLV, te);
+                        }
+                        else
+                            te = enter_table(id, ARRAY, CHAR, addr, length, table_num);
+                        addr+=length*4;
+                    }
+                    else if(type == INTSY){
+                        if(table_num==0){
+                            te = enter_table(id, GLOARR, INT, addr, length, table_num);
+                            write_quadruple_s(GLV, te);
+                        }
+                        else
+                            te = enter_table(id, ARRAY, INT, addr, length, table_num);
+                        addr+=length*4;
+                    }
+                }
+            }
         }
-        else if(type == INTSY){
-            if(table_num==0){
-                te = enter_table(id, GLOVAR, INT, addr, length, table_num);
-                write_quadruple_s(GLV, te);
+        else{
+            if(type == CHARSY){
+                if(table_num==0){
+                    te = enter_table(id, GLOVAR, CHAR, addr, length, table_num);
+                    write_quadruple_s(GLV, te);
+                }
+                else
+                    te = enter_table(id, VAR, CHAR, addr, length, table_num);
+                addr+=4;
             }
-            else
-                te = enter_table(id, VAR, INT, addr, length, table_num);
-            addr+=4;
+            else if(type == INTSY){
+                if(table_num==0){
+                    te = enter_table(id, GLOVAR, INT, addr, length, table_num);
+                    write_quadruple_s(GLV, te);
+                }
+                else
+                    te = enter_table(id, VAR, INT, addr, length, table_num);
+                addr+=4;
+            }
         }
     }
     while(symbol == COMMASY){
         getsym();
         if(symbol != IDSY){
             error(8);//error 8:需要一个标识符
+            skip(4);
+            continue;
         }
         strcpy(id,token);
         getsym();
@@ -301,14 +358,20 @@ void var_def(){
             getsym();
             if(symbol != INTCON){
                 error(15);//error 15:需要一个整数
+                skip(4);
+                continue;
             }
             if(num == 0){
                 error(30);
+                skip(4);
+                continue;
             }
             length = num;
             getsym();
             if(symbol != RBRACKETSY){
                 error(18);//error 18:需要一个右方括号
+                skip(4);
+                continue;
             }
             if(type == CHARSY){
                 if(table_num==0){
@@ -354,35 +417,61 @@ void var_def(){
     }
 }
 void r_func_dcl(){
+    int type = 0;
     fprintf(output_grammar_pointer,"This is a declaration of a function with returns!\n");
-    dcl_head();
+    type = dcl_head();
     if(symbol != LPARSY){
         error(19);//error 19:需要一个左括号
+        skip(2);
+        return;
     }
     getsym();
     para();
     if(symbol != RPARSY){
         error(20);//error 20:需要一个右括号
+        skip(2);
+        return;
     }
     getsym();
     if(symbol != LBRACESY){
         error(21);//error 21:需要一个左花括号
+        skip(2);
+        return;
     }
     getsym();
     comp_statement();
     if(symbol != RBRACESY){
         error(22);//error 22:需要一个右花括号
+        skip(2);
+        return;
     }
-    if(!return_num)
+    if(!return_num){
         error(42);//error 42:缺少返回值
-    if(return_num == 1)
+        skip(2);
+        return;
+    }
+    if(return_num == 1){
         error(43);//返回值类型不匹配
+        skip(2);
+        return;
+    }
+    if(type == INT && return_num != 2){
+        error(43);
+        skip(2);
+        return;
+    }
+    else if(type == CHAR && return_num != 3){
+        error(43);
+        skip(2);
+        return;
+    }
     write_quadruple(END);//声明函数结束
     getsym();
     return_num = 0;
 }
-void dcl_head(){
+int dcl_head(){
     char id[MAXTokenL];
+    int type;
     TableEle* te;
     fprintf(output_grammar_pointer,"This is a head of declaration!\n");
     if(symbol == INTSY){
@@ -396,6 +485,7 @@ void dcl_head(){
         getsym();
         addr = 0;
         table_num++;
+        type=INT;
     }
     else if(symbol == CHARSY){
         getsym();
@@ -408,10 +498,12 @@ void dcl_head(){
         getsym();
         addr = 0;
         table_num++;
+        type=CHAR;
     }
     else{
         error(17);//需要一个类型符
     }
+    return type;
     //table_num++;
 }
 void para(){
@@ -441,6 +533,7 @@ void para_table(){
         }
         else{
             error(8);//需要一个标识符
+            skip(4);
         }
         while(symbol == COMMASY){
             getsym();
@@ -462,6 +555,7 @@ void para_table(){
                 }
                 else{
                     error(8);//需要一个标识符
+                    skip(4);
                 }
             }
         }
@@ -494,8 +588,9 @@ void statement(){
         getsym();
         statement_lists();
         if(symbol != RBRACESY){
-            printf("111");
+            //printf("111");
             error(22);//需要右花括号
+            return;
         }
         getsym();
     }
@@ -503,6 +598,8 @@ void statement(){
         read_statement();
         if(symbol != SEMISY){
             error(13);
+            skip(3);
+            return;
         }
         getsym();
     }
@@ -510,6 +607,8 @@ void statement(){
         write_statement();
         if(symbol != SEMISY){
             error(13);
+            skip(3);
+            return;
         }
         getsym();
     }
@@ -517,6 +616,8 @@ void statement(){
         return_statement();
         if(symbol != SEMISY){
             error(13);
+            skip(3);
+            return;
         }
         getsym();
     }
@@ -530,6 +631,8 @@ void statement(){
             function_call_statement();
             if(symbol != SEMISY){
                 error(13);
+                skip(3);
+                return;
             }
             getsym();
         }
@@ -539,6 +642,8 @@ void statement(){
             assign_statement();
             if(symbol != SEMISY){
                 error(13);
+                skip(3);
+                return;
             }
             getsym();
         }
@@ -548,6 +653,8 @@ void statement(){
     }
     else{
         error(13);//需要一个分号
+        skip(3);
+        return;
     }
 }
 void condition_statement(){
@@ -639,6 +746,7 @@ void loop_statement(){
         statement();
         if(symbol != WHILESY){
             error(25); //error 25:缺少WHILE
+            return;
         }
         getsym();
         if(symbol != LPARSY)
@@ -656,21 +764,29 @@ void loop_statement(){
             error(19);
         }
         getsym();
-        if(symbol != IDSY){
-            error(8);
-        }
-
-        //查符号表
-        te1 = search_all(token,table_num);
-        getsym();
-        if(symbol != ISSY){
-            error(14);
-        }
-        getsym();
-        te_exp = expression();
-        write_quadruple_d(ASN,te_exp,te1);//赋值语句，将te_exp保存到te1
+        do{
+            if(symbol != IDSY){
+                error(8);
+                skip(3);
+                break;
+            }
+            else{
+            //查符号表
+                te1 = search_all(token,table_num);
+                getsym();
+                if(symbol != ISSY){
+                    error(14);
+                    skip(3);
+                    break;
+                }
+                getsym();
+                te_exp = expression();
+                write_quadruple_d(ASN,te_exp,te1);//赋值语句，将te_exp保存到te1
+            }
+        }while(0);
         if(symbol != SEMISY){
             error(13);
+            skip(3);
         }
         getsym();
         te_label2 = create_new_label();
@@ -678,6 +794,7 @@ void loop_statement(){
         te_cond = condition();
         if(symbol != SEMISY){
             error(13);
+            skip(3);
         }
         getsym();
         te_label = create_new_label();
@@ -688,21 +805,34 @@ void loop_statement(){
         write_quadruple_s(LAB,te_label3);//设置label3（标志step）
         if(symbol != IDSY){
             error(8);
+            skip(3);
+            getsym();
+            return;
         }
         te1 = search_all(token,table_num);
         getsym();
         if(symbol != ISSY){
             error(14);
+            skip(3);
+            getsym();
+            return;
         }
         getsym();
         if(symbol != IDSY){
             error(8);
+            skip(3);
+            getsym();
+            return;
         }
         //注意这里可能是不一样的标识符
         te2 = search_all(token,table_num);
         getsym();
-        if(symbol != PLUSSY && symbol != MINUSSY)
+        if(symbol != PLUSSY && symbol != MINUSSY){
             error(26);
+            skip(3);
+            getsym();
+            return;
+        }
         if(symbol == PLUSSY){
             getsym();
             te_step = step();
@@ -719,6 +849,9 @@ void loop_statement(){
         write_quadruple_d(ASN,te_exp,te1);//保存te_exp到te1
         if(symbol != RPARSY){
             error(20);
+            skip(3);
+            getsym();
+            return;
         }
         getsym();
         write_quadruple_s(GOTO,te_label2);//跳转到条件（label2）
@@ -729,6 +862,9 @@ void loop_statement(){
     }
     else{
         error(27);
+        skip(3);
+            getsym();
+            return;
     }
 }
 TableEle* step(){
@@ -750,6 +886,8 @@ int function_call_statement(){
     fprintf(output_grammar_pointer,"This is a function call statement!\n");
     if(symbol != IDSY){
         error(8);
+        skip(4);
+        return;
     }
     te = search_all(token,table_num);
     getsym();
@@ -766,12 +904,16 @@ int function_call_statement(){
 
     if(symbol != LPARSY){
         error(19);
+        skip(4);
+        return;
     }
     getsym();
     value_para_table(te);
     write_quadruple_s(CALL,te);//函数调用语句，有返回值的函数值在调用完毕后保存在$v0
     if(symbol != RPARSY){
         error(20);
+        skip(4);
+        return;
     }
     getsym();
     return type;
@@ -786,11 +928,17 @@ void value_para_table(TableEle* te){
         t_te = expression();
         t_te2 = tbl[te->addr].table_ele[i];
         i++;
-        if(t_te2.kind!=PARA)
+        if(t_te2.kind!=PARA){
             error(40);//参数数量错误
+            skip(5);
+            return;
+        }
         //printf("first addr: %d\n",t_te2.addr);
-        if(t_te2.type != t_te->type)
+        if(t_te2.type != t_te->type){
             error(41);
+            skip(5);
+            return;
+        }
         tmp = create_new_tmp(1,addr);
         tmp->addr = t_te2.addr;
         write_quadruple_d(PUSH,t_te,tmp);//参数压栈
@@ -800,10 +948,16 @@ void value_para_table(TableEle* te){
             t_te = expression();
             t_te2 = tbl[te->addr].table_ele[i];
             i++;
-            if(t_te2.kind!=PARA)
+            if(t_te2.kind!=PARA){
                 error(40);//参数数量错误
-            if(t_te2.type != t_te->type)
+                skip(5);
+                return;
+            }
+            if(t_te2.type != t_te->type){
                 error(41);
+                skip(5);
+                return;
+            }
             //printf("next addr: %d\n",t_te2.addr);
             tmp = create_new_tmp(1,addr);
             tmp->addr = t_te2.addr;
@@ -819,28 +973,43 @@ void assign_statement(){
     fprintf(output_grammar_pointer,"This is an assign statement!\n");
     if(symbol != IDSY){
         error(8);
+        skip(4);
+        return;
     }
     te1 = search_all(token,table_num);
     if(te1->kind != VAR && te1->kind != PARA && te1->kind != ARRAY
-       && te1->kind != GLOARR && te1->kind != GLOVAR)
+       && te1->kind != GLOARR && te1->kind != GLOVAR){
         error(38);
+        skip(4);
+        return;
+       }
     getsym();
     if(symbol == LBRACKETSY){
-        if(te1->kind != ARRAY && te1->kind != GLOARR)
+        if(te1->kind != ARRAY && te1->kind != GLOARR){
             error(38);
+            skip(4);
+            return;
+        }
         getsym();
         te2 = expression();
         if(symbol != RBRACKETSY){
             error(18);
+            skip(4);
+            return;
         }
         getsym();
     }
     else{
-        if(te1->kind == ARRAY || te1->kind == GLOARR)
+        if(te1->kind == ARRAY || te1->kind == GLOARR){
             error(38);
+            skip(4);
+            return;
+        }
     }
     if(symbol != ISSY){
         error(14);
+        skip(4);
+        return;
     }
     getsym();
     te = expression();
@@ -855,14 +1024,20 @@ void read_statement(){
     fprintf(output_grammar_pointer,"This is a read statement!\n");
     if(symbol != SCANFSY){
         error(28);
+        skip(4);
+        return;
     }
     getsym();
     if(symbol != LPARSY){
         error(19);
+        skip(4);
+        return;
     }
     getsym();
     if(symbol != IDSY){
         error(8);
+        skip(4);
+        return;
     }
     te = search_all(token,table_num);
     write_quadruple_s(RD,te);//读语句
@@ -871,6 +1046,8 @@ void read_statement(){
         getsym();
         if(symbol != IDSY){
             error(8);
+            skip(4);
+            return;
         }
         te = search_all(token,table_num);
         write_quadruple_s(RD,te);
@@ -878,6 +1055,8 @@ void read_statement(){
     }
     if(symbol != RPARSY){
         error(20);
+        skip(4);
+        return;
     }
     getsym();
 }
@@ -887,10 +1066,14 @@ void write_statement(){
     fprintf(output_grammar_pointer,"This is a write statement!\n");
     if(symbol != PRINTFSY){
         error(29);
+        skip(4);
+        return;
     }
     getsym();
     if(symbol != LPARSY){
         error(19);
+        skip(4);
+        return;
     }
     getsym();
     if(symbol == STRINGCON){
@@ -908,6 +1091,8 @@ void write_statement(){
         }
         if(symbol != RPARSY){
             error(20);
+            skip(4);
+            return;
         }
         getsym();
     }
@@ -919,6 +1104,8 @@ void write_statement(){
             write_quadruple_s(WRI,te);
         if(symbol != RPARSY){
             error(20);
+            skip(4);
+            return;
         }
         getsym();
     }
@@ -928,6 +1115,8 @@ void return_statement(){
     fprintf(output_grammar_pointer,"This is a return statement!\n");
     if(symbol != RETURNSY){
         error(32);
+        skip(4);
+        return;
     }
     getsym();
     if(symbol == LPARSY){
@@ -935,6 +1124,8 @@ void return_statement(){
         te = expression();
         if(symbol != RPARSY){
             error(20);
+            skip(4);
+            return;
         }
         getsym();
         write_quadruple_s(RRT,te);//有返回值语句，要把值存在$v0
@@ -958,6 +1149,8 @@ void v_func_dcl(){
     getsym();
     if(symbol != IDSY){
         error(8);
+        skip(6);
+        return;
     }
     strcpy(id,token);
     te = enter_table(id,FUNC,VOID,table_num+1,0,0);
@@ -967,23 +1160,34 @@ void v_func_dcl(){
     getsym();
     if(symbol != LPARSY){
         error(19);
+        skip(6);
+        return;
     }
     getsym();
     para();
     if(symbol != RPARSY){
         error(20);
+        skip(6);
+        return;
     }
     getsym();
     if(symbol != LBRACESY){
         error(21);
+        skip(6);
+        return;
     }
     getsym();
     comp_statement();
     if(symbol != RBRACESY){
         error(22);
+        skip(6);
+        return;
     }
-    if(return_num == 2 || return_num == 3)
+    if(return_num == 2 || return_num == 3){
         error(43);
+        skip(6);
+        return;
+    }
     write_quadruple(END);//声明函数结束
     return_num = 0;
     getsym();
@@ -1017,7 +1221,7 @@ void func_main(){
     getsym();
     comp_statement();
     if(symbol != RBRACESY){
-            printf("333");
+//            printf("333");
         error(22);
     }
     write_quadruple(MEND);//声明函数结束
@@ -1105,7 +1309,8 @@ TableEle* factor(){
         if(symbol != RPARSY){
             error(20);
         }
-        getsym();
+        else
+            getsym();
     }
     else if(symbol == IDSY){
         strcat(pre_token,token);
@@ -1130,6 +1335,9 @@ TableEle* factor(){
             //以pre_token查符号表
             t_te1 = search_all(id,table_num);
             //取到了数组
+            if(t_te1->kind != ARRAY && t_te1->kind != GLOARR){
+                error(44);
+            }
             pre_token[0]='\0';
             getsym();
             t_te2 = expression();
@@ -1153,6 +1361,11 @@ TableEle* factor(){
             pre_token[0] = '\0';
         }
     }
+    else{
+        te = create_new_tmp(1,addr);
+        error(23);
+        skip(3);
+    }
     return te;
 }
 void integer(){
@@ -1162,12 +1375,20 @@ void integer(){
         if(symbol == INTCON && num != 0){
             getsym();
         }
+        else{
+            error(15);
+            skip(3);
+        }
     }
     else if(symbol == MINUSSY){
         getsym();
         if(symbol == INTCON && num != 0){
             num = -1 * num;
             getsym();
+        }
+        else{
+            error(15);
+            skip(3);
         }
     }
     else if(symbol == INTCON)

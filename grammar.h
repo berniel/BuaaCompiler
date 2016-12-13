@@ -12,7 +12,7 @@ void con_def();
 void var_dcl();
 void var_def();
 void r_func_dcl();
-void dcl_head();
+int dcl_head();
 void para();
 void para_table();
 void comp_statement();

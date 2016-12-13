@@ -13,7 +13,7 @@ int main(){
 
     printf("Input File Dir:\n");
     //scanf("%s",input_file_dir);
-    strcpy(input_file_dir,"in.c0");
+    strcpy(input_file_dir,"test.txt");
     printf("Output Words Dir:\n");
     //scanf("%s",output_words_dir);
     strcpy(output_words_dir,"out_words.txt");
